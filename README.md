@@ -1,310 +1,203 @@
-::: {align="center"}
-`<img src="https://capsule-render.vercel.app/api?type=waving&height=220&color=gradient&text=AI%20Credit%20Risk%20Prediction&fontSize=38&fontColor=ffffff&animation=fadeIn&desc=Machine%20Learning%20%7C%20Credit%20Risk%20Assessment&descAlignY=65&descSize=16" width="100%" alt="AI Credit Risk Prediction banner"/>`{=html}
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&height=220&color=gradient&text=AI%20Credit%20Risk%20Prediction&fontSize=38&fontColor=ffffff&animation=fadeIn&desc=Machine%20Learning%20%7C%20Credit%20Risk%20Assessment&descAlignY=65&descSize=16" width="100%" alt="AI Credit Risk Prediction banner"/>
 
 # AI Credit Risk Prediction System
 
-**An end-to-end machine learning project for estimating loan default
-risk from borrower and loan information.**
+**An end-to-end machine learning project to estimate loan default risk using borrower and loan attributes.**
 
 [![Python](https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Scikit-learn](https://img.shields.io/badge/Scikit--learn-ML-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)](https://scikit-learn.org/)
 [![XGBoost](https://img.shields.io/badge/Model-XGBoost-2E8B57?style=for-the-badge)](https://xgboost.readthedocs.io/)
 [![Streamlit](https://img.shields.io/badge/Dashboard-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io/)
-[![GitHub](https://img.shields.io/badge/Repository-GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/SumitSubham/AI-Credit-Risk-Prediction-System)
 
-[![Models](https://img.shields.io/badge/Models-Logistic%20Regression%20%7C%20Random%20Forest%20%7C%20XGBoost-blue?style=flat-square)](#-machine-learning-models)
-[![Purpose](https://img.shields.io/badge/Purpose-Educational%20%26%20Portfolio-lightgrey?style=flat-square)](#-limitations-and-disclaimer)
+[**Live demo:** *Coming soon — deployment not yet configured*]
 
-**[📂 View
-Repository](https://github.com/SumitSubham/AI-Credit-Risk-Prediction-System)**
-:::
+</div>
 
-------------------------------------------------------------------------
+---
 
-## 📖 Overview
+## Overview
 
-Credit risk assessment helps lenders evaluate the possibility that a
-borrower may default on a loan. This project builds a machine learning
-workflow that uses borrower characteristics and loan attributes to
-estimate default probability and provide a risk classification through
-an interactive Streamlit dashboard.
+This project explores credit risk using borrower and loan information, trains and evaluates classification models, and provides a Streamlit dashboard that estimates a loan applicant's default probability and assigns a risk classification.
 
-The project includes exploratory data analysis, data preprocessing,
-feature engineering, training and evaluation of multiple classification
-algorithms, model selection, and a prediction interface.
+The notebook evaluates **Logistic Regression, Random Forest, and XGBoost**. The dashboard currently uses the saved **XGBoost** model artifact.
 
-**Three models are evaluated:** Logistic Regression, Random Forest, and
-XGBoost. **XGBoost is the selected model for the current prediction
-application**, based on the project's model evaluation results.
+> **Portfolio/educational project only.** Predictions are model estimates and must not be used as the sole basis for real lending decisions.
 
-> **Important:** This is an educational and portfolio project, not a
-> production-ready lending decision system.
+## Key Features
 
-## ✨ Key Features
+- Exploratory data analysis (EDA) with charts and target distribution analysis
+- Data preprocessing and feature engineering
+- Comparison of Logistic Regression, Random Forest, and XGBoost
+- Classification metrics, ROC-AUC, confusion matrices, and threshold analysis
+- Streamlit prediction dashboard with risk classification
+- Exportable prediction reports in PDF, CSV, and JSON formats
+- Saved model artifact loaded with Joblib
 
-  -----------------------------------------------------------------------
-  Feature                             Description
-  ----------------------------------- -----------------------------------
-  📊 Exploratory Data Analysis        Examine data distributions, missing
-                                      values, and target-class balance.
+## Dataset
 
-  🧹 Data Validation                  Validate required input fields,
-                                      types, and acceptable ranges.
+- **Source:** [Credit Risk Dataset — Kaggle, by laotse](https://www.kaggle.com/datasets/laotse/credit-risk-dataset/data)
+- **Rows:** 32,581
+- **Columns:** 12 (11 input features and the target)
+- **Target:** `loan_status` (`0` = non-default, `1` = default)
 
-  ⚙️ Feature Engineering              Prepare borrower and loan
-                                      attributes used by the prediction
-                                      pipeline.
+The dataset contains borrower and loan attributes such as age, income, home ownership, employment length, loan intent, loan grade, loan amount, interest rate, loan-to-income ratio, previous default indicator, and credit history length.
 
-  🤖 Multi-Model Evaluation           Train and compare Logistic
-                                      Regression, Random Forest, and
-                                      XGBoost.
+Please consult the original Kaggle page for the current license and applicable usage terms.
 
-  🏆 Model Selection                  Use evaluation results to select
-                                      XGBoost for the application.
+## Exploratory Data Analysis
 
-  🎯 Default Probability              Estimate the probability of loan
-                                      default for an entered application.
+The notebook includes target-class distribution, default-rate comparisons, feature relationships, and correlation analysis.
 
-  🚦 Risk Classification              Produce a classification using the
-                                      saved model threshold.
+![Loan status distribution](docs/images/loan_status_distribution.png)
 
-  🖥️ Interactive Dashboard            Explore a prediction through the
-                                      Streamlit interface.
+![Default rate by loan grade](docs/images/default_rate_by_loan_grade.png)
 
-  📄 Report Export                    Export prediction reports in PDF,
-                                      CSV, and JSON formats.
+## Model Evaluation
 
-  💾 Model Persistence                Load the saved XGBoost model
-                                      artifact using Joblib.
-  -----------------------------------------------------------------------
+The following are the **recorded test-set results in the uploaded notebook**. Logistic Regression and XGBoost use a 0.50 classification threshold; Random Forest uses a 0.60 threshold. ROC-AUC is calculated from predicted probabilities and does not depend on the classification threshold.
 
-## 🖼️ Application Preview
+| Model / threshold | Accuracy | Precision | Recall | F1-score | ROC-AUC |
+|---|---:|---:|---:|---:|---:|
+| Logistic Regression (0.50) | 86.61% | 75.89% | 56.84% | 65.00% | 87.52% |
+| Random Forest (0.60) | 93.52% | 96.03% | 73.41% | 83.21% | 93.63% |
+| XGBoost (0.50) | 93.97% | 97.95% | 73.98% | 84.29% | 95.10% |
 
-The project includes a Streamlit dashboard for entering borrower
-information, reviewing prediction results, and exporting reports.
+**Selected application model: XGBoost.** It has the highest recorded accuracy, F1-score, and ROC-AUC in this comparison. Metric values are dependent on the dataset split, preprocessing, and evaluation setup; they should not be interpreted as evidence of production readiness.
 
-**Dashboard screenshot:** A screenshot can be added here once it has been saved in the repository (for example, `docs/images/dashboard.png`). No screenshot is currently embedded in this README.
-## 🔄 Project Workflow
+### Confusion Matrices and Evaluation Graphs
 
-``` mermaid
+**Logistic Regression**
+
+![Logistic Regression confusion matrix](docs/images/logistic_regression_confusion_matrix.png)
+
+![Logistic Regression ROC curve](docs/images/logistic_regression_roc_curve.png)
+
+**Random Forest**
+
+![Random Forest confusion matrix](docs/images/random_forest_confusion_matrix.png)
+
+![Random Forest feature importance](docs/images/random_forest_feature_importance.png)
+
+**XGBoost**
+
+![XGBoost confusion matrix](docs/images/xgboost_confusion_matrix.png)
+
+![XGBoost threshold analysis](docs/images/xgboost_threshold_analysis.png)
+
+## Project Workflow
+
+```mermaid
 flowchart TD
-    A[Credit Risk Dataset] --> B[Data Understanding and EDA]
+    A[Kaggle Credit Risk Dataset] --> B[Exploratory Data Analysis]
     B --> C[Preprocessing and Feature Engineering]
     C --> D[Train and Evaluate Models]
-    D --> E1[Logistic Regression]
-    D --> E2[Random Forest]
-    D --> E3[XGBoost]
-    E1 --> F[Compare Evaluation Results]
-    E2 --> F
-    E3 --> F
-    F --> G[Select XGBoost]
-    G --> H[Save Model and Threshold]
-    H --> I[Prediction Module]
-    I --> J[Streamlit Dashboard]
-    J --> K[Prediction Reports]
+    D --> E[Logistic Regression]
+    D --> F[Random Forest]
+    D --> G[XGBoost]
+    E --> H[Compare Metrics]
+    F --> H
+    G --> H
+    H --> I[Select XGBoost]
+    I --> J[Saved Model and Threshold]
+    J --> K[Prediction Module]
+    K --> L[Streamlit Dashboard]
+    L --> M[Prediction Reports]
 ```
 
-## 📂 Project Structure
+## Project Structure
 
-``` text
+```text
 AI-Credit-Risk-Prediction-System/
 ├── dashboard/
 │   └── app.py
+├── data/
+│   └── raw/
+│       └── credit_risk_dataset.csv
+├── docs/
+│   └── images/
 ├── models/
 │   └── credit_risk_xgboost.joblib
 ├── notebooks/
 │   └── 01_Exploratory_Data_Analysis.ipynb
 ├── src/
 │   └── predict.py
-├── .gitignore
 ├── README.md
 └── requirements.txt
 ```
 
-*Confirm the exact notebook filename and paths in your local repository
-before publishing.*
+The Random Forest artifact is used in notebook evaluation and may be large. It is not required to run the dashboard if the app loads only the XGBoost artifact. Confirm that any model file required by the application is included or otherwise made available before deployment.
 
-## 📊 Dataset
-
-The project uses a credit risk dataset with borrower and loan-related
-attributes.
-
-  Detail               Description
-  -------------------- ---------------------------------
-  Target variable      `loan_status`
-  Class `0`            No default
-  Class `1`            Default
-  Input features       11 borrower and loan attributes
-  Known dataset size   32,581 records
-
-Features include age, income, home ownership, employment length, loan
-intent, loan grade, loan amount, interest rate, loan-to-income
-proportion, previous default indicator, and credit history length.
-
-The raw CSV is kept locally and may be excluded from GitHub by `.gitignore`.
-If it is not present after cloning, obtain the authorized dataset and place
-it at the path expected by the notebook before running the analysis. The
-dataset is not assumed to be bundled with this repository.
-
-## 🧠 Machine Learning Models
-
-Three classification algorithms were implemented and evaluated.
-
-  -----------------------------------------------------------------------
-  Model                               Role in the project
-  ----------------------------------- -----------------------------------
-  **Logistic Regression**             Baseline classification model
-
-  **Random Forest Classifier**        Tree-based ensemble model for
-                                      learning nonlinear patterns
-
-  **XGBoost Classifier**              Gradient-boosting model selected
-                                      for the current application
-  -----------------------------------------------------------------------
-
-### Model Evaluation
-
-The models should be compared using the evaluation results recorded in
-the project notebook. Recommended metrics include:
-
--   **Accuracy:** Overall proportion of correct predictions.
--   **Precision:** Of applications predicted as defaults, the proportion
-    that are actual defaults.
--   **Recall:** Of actual defaults, the proportion identified by the
-    model.
--   **F1-score:** Harmonic mean of precision and recall.
--   **ROC-AUC:** Ability to distinguish default and non-default cases
-    across classification thresholds.
-
-### Model Comparison Results
-
-| Model | Accuracy | Precision | Recall | F1-score | ROC-AUC |
-|---|---:|---:|---:|---:|---:|
-| Logistic Regression | Not verified | Not verified | Not verified | Not verified | Not verified |
-| Random Forest | Not verified | Not verified | Not verified | 83.21% | 93.63% |
-| XGBoost | Not verified | Not verified | Not verified | Not verified | Not verified |
-
-**Verification note:** The Random Forest test F1-score (0.8321) and ROC-AUC (0.9363) are taken from the saved notebook outputs. The other metrics are left unreported until their exact values are verified. Do not interpret the Random Forest scores as XGBoost results.
-
-### Final Model
-
-**Selected model: XGBoost Classifier**
-
-The application loads the saved model artifact, which contains the
-trained model and its configured classification threshold. The
-prediction module validates user inputs, derives required features,
-estimates default probability, and returns the prediction and risk
-classification.
-
-## 🛠️ Technology Stack
-
--   **Programming:** Python
--   **Data analysis:** Pandas, NumPy
--   **Machine learning:** Scikit-learn, XGBoost
--   **Model persistence:** Joblib
--   **Dashboard:** Streamlit
--   **PDF reports:** ReportLab
--   **Development:** Jupyter Notebook, VS Code
--   **Version control:** Git and GitHub
-
-## 🚀 Installation Guide
-
-### Prerequisites
-
--   Python installed
--   Git installed
--   Access to any required dataset files
--   The saved model artifact available at the path expected by the app
+## Run Locally
 
 ### 1. Clone the repository
 
-``` bash
+```powershell
 git clone https://github.com/SumitSubham/AI-Credit-Risk-Prediction-System.git
 cd AI-Credit-Risk-Prediction-System
 ```
 
-### 2. Create and activate a virtual environment
+### 2. Create and activate a virtual environment (Windows PowerShell)
 
-For Windows PowerShell:
-
-``` powershell
+```powershell
 python -m venv venv
 .\venv\Scripts\Activate.ps1
 ```
 
 ### 3. Install dependencies
 
-``` bash
+```powershell
 python -m pip install -r requirements.txt
 ```
 
-### 4. Launch the Streamlit dashboard
+### 4. Start the dashboard
 
-``` bash
+```powershell
 python -m streamlit run dashboard/app.py
 ```
 
-Open the local URL displayed in the terminal to use the application.
+Open the local URL printed in the terminal. To publish a public demo, deploy the app separately (for example, with [Streamlit Community Cloud](https://share.streamlit.io/)) and replace the “Coming soon” text at the top with the actual deployed URL.
 
-> **Setup note:** If a required dataset or model file is excluded from
-> Git, obtain it separately and place it at the expected path before
-> running the relevant workflow.
+## How to Use the Dashboard
 
-## 📘 How to Use the Dashboard
+1. Start the Streamlit app.
+2. Enter the requested borrower and loan details.
+3. Run the prediction.
+4. Review the estimated default probability and risk classification.
+5. Download the available PDF, CSV, or JSON report.
 
-1.  Launch the Streamlit app using the command above.
-2.  Enter the required borrower and loan information.
-3.  Run the prediction.
-4.  Review the estimated default probability and resulting risk
-    classification.
-5.  Export the available report in PDF, CSV, or JSON format if required.
+## Technology Stack
 
-The displayed probability is a model estimate and is not a guarantee of
-future repayment or default.
+- **Language:** Python
+- **Data analysis:** Pandas, NumPy
+- **Machine learning:** Scikit-learn, XGBoost
+- **Model persistence:** Joblib
+- **Dashboard:** Streamlit
+- **Reports:** ReportLab and dashboard export utilities
+- **Development and version control:** Jupyter Notebook, VS Code, Git, GitHub
 
-## 🔮 Future Improvements
+## Limitations and Disclaimer
 
--   Verify and document the remaining model evaluation metrics.
--   Add dashboard screenshots and a short demonstration GIF.
--   Evaluate probability calibration and tune the classification
-    threshold.
--   Add model explainability, such as SHAP, if implemented and
-    validated.
--   Add automated tests and continuous integration.
--   Deploy the dashboard to a suitable hosting platform.
--   Monitor data drift and model performance if the project is extended
-    toward production.
+- Results depend on the dataset and the train/test split used in the notebook.
+- Class imbalance means accuracy alone is not sufficient for model evaluation.
+- Threshold choice changes the precision/recall trade-off.
+- Probability calibration, fairness, explainability, privacy, security, and regulatory requirements would need further work before any real-world lending use.
+- This project is for educational and portfolio demonstration only and is not a production credit-decision system.
 
-## ⚠️ Limitations and Disclaimer
+## Author
 
--   Model quality depends on the training data and how well it
-    represents future applicants.
--   Class imbalance can affect the interpretation of accuracy.
--   False negatives and false positives have different consequences in
-    credit risk.
--   Probability estimates may require calibration.
--   Fairness, explainability, privacy, security, and regulatory
-    requirements must be addressed before real-world lending use.
+**Sumit Subham**  
+**Data Analyst — City Union Bank Ltd., Bengaluru, India**  
+M.Tech — **Industrial Engineering & Management (Data Science), NIT Tiruchirappalli**
 
-**This project is intended for educational, research, and portfolio
-demonstration purposes only. It must not be used as the sole basis for
-real lending decisions.**
+- [GitHub Profile](https://github.com/SumitSubham)
+- [LinkedIn Profile](https://www.linkedin.com/in/sumit-subham-42081025a/)
 
-## 👨‍💻 Author
+---
 
-**Sumit Subham**
+<div align="center">
 
-Data Analyst(Assistant Manager) --- City Union Bank Ltd., Bangalore
-M.Tech --- Industrial Engineering and Management (Data Science), NIT Trichy
+If you find this project useful, feel free to explore the repository and share feedback.
 
-[GitHub Profile](https://github.com/SumitSubham) · [Project
-Repository](https://github.com/SumitSubham/AI-Credit-Risk-Prediction-System)
-
-------------------------------------------------------------------------
-
-::: {align="center"}
-If you find this project useful, feel free to explore the repository and
-share feedback.
-
-`<img src="https://capsule-render.vercel.app/api?type=waving&height=90&color=gradient&section=footer" width="100%" alt="Footer banner"/>`{=html}
-:::
+</div>

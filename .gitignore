@@ -45,3 +45,4 @@ data/raw/*
 
 # Ignore Python cache directories
 **/__pycache__/
+models/credit_risk_random_forest.joblib
