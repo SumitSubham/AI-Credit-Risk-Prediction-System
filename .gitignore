@@ -40,7 +40,8 @@ htmlcov/
 **/.venv/
 
 # Ignore raw datasets
-data/raw/
+data/raw/*
+!data/raw/credit_risk_dataset.csv
 
 # Ignore Python cache directories
 **/__pycache__/
