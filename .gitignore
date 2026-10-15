@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment variables and secrets
+.env
+.env.*
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Editors and operating systems
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.log
+*.tmp
+
+# Generated reports and exports
+credit_risk_assessment.pdf
+credit_risk_assessment.csv
+credit_risk_assessment.json
+credit_risk_print_report.html
+
+# Test and coverage output
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Ignore virtual environments anywhere in the project
+**/venv/
+**/.venv/
+
+# Ignore raw datasets
+data/raw/
+
+# Ignore Python cache directories
+**/__pycache__/
