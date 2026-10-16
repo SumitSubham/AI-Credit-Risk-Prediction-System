@@ -157,7 +157,7 @@ python -m pip install -r requirements.txt
 python -m streamlit run dashboard/app.py
 ```
 
-Open the local URL printed in the terminal. To publish a public demo, deploy the app separately (for example, with [Streamlit Community Cloud](https://share.streamlit.io/)) and replace the “Coming soon” text at the top with the actual deployed URL.
+Open the local URL printed in the terminal. The public demo is available on [Streamlit Community Cloud](https://ai-credit-risk-prediction-sumit.streamlit.app).
 
 ## How to Use the Dashboard
 
@@ -185,22 +185,20 @@ Open the local URL printed in the terminal. To publish a public demo, deploy the
 - Probability calibration, fairness, explainability, privacy, security, and regulatory requirements would need further work before any real-world lending use.
 - This project is for educational and portfolio demonstration only and is not a production credit-decision system.
 
-## 👨 Author
+## About the Author
 
 **Sumit Subham**  
-**Data Analyst — City Union Bank Ltd., Bengaluru, India**  
-**M.Tech — Industrial Engineering & Management (Data Science), NIT Tiruchirappalli**
+Data Analyst | City Union Bank Ltd., Bengaluru, India  
+M.Tech in Industrial Engineering & Management (Data Science) — NIT Tiruchirappalli
 
-- [GitHub Profile](https://github.com/SumitSubham)
-- [LinkedIn Profile](https://www.linkedin.com/in/sumit-subham-42081025a/)
+[GitHub](https://github.com/SumitSubham) · [LinkedIn](https://www.linkedin.com/in/sumit-subham-42081025a/)
 
-## 📜 License
-
-This project is intended for educational and portfolio purposes only. All rights reserved. No license is granted for reuse or redistribution.
 ---
 
-<div align="center">
+## License
 
-If you find this project useful, feel free to explore the repository and share feedback.
+This project is intended for educational and portfolio purposes only. All rights reserved. No license is granted for reuse or redistribution.
 
-</div>
+---
+
+*If you find this project useful, feel free to explore the repository and share feedback.*
