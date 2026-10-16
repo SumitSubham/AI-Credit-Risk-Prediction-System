@@ -11,7 +11,7 @@
 [![XGBoost](https://img.shields.io/badge/Model-XGBoost-2E8B57?style=for-the-badge)](https://xgboost.readthedocs.io/)
 [![Streamlit](https://img.shields.io/badge/Dashboard-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io/)
 
-[**Live demo:** *Coming soon — deployment not yet configured*]
+[🚀 **Live Demo — Try the Credit Risk Prediction App**](https://ai-credit-risk-prediction-sumit.streamlit.app)
 
 </div>
 
@@ -185,15 +185,18 @@ Open the local URL printed in the terminal. To publish a public demo, deploy the
 - Probability calibration, fairness, explainability, privacy, security, and regulatory requirements would need further work before any real-world lending use.
 - This project is for educational and portfolio demonstration only and is not a production credit-decision system.
 
-## Author
+## 👨 Author
 
 **Sumit Subham**  
 **Data Analyst — City Union Bank Ltd., Bengaluru, India**  
-M.Tech — **Industrial Engineering & Management (Data Science), NIT Tiruchirappalli**
+**M.Tech — Industrial Engineering & Management (Data Science), NIT Tiruchirappalli**
 
 - [GitHub Profile](https://github.com/SumitSubham)
 - [LinkedIn Profile](https://www.linkedin.com/in/sumit-subham-42081025a/)
 
+## 📜 License
+
+This project is intended for educational and portfolio purposes only. All rights reserved. No license is granted for reuse or redistribution.
 ---
 
 <div align="center">
